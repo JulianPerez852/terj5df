@@ -32,15 +32,17 @@ it('renders a table with two th one for Nombre and the other for Apellido', () =
 it('creates a new guest when submitting the form', () => {
   const wrapper = shallow(<App />)
 
-  wrapper.find('input[name="first-name"]').simulate('change', { target: { value: 'Juan' } });
-  wrapper.find('input[name="last-name"]').simulate('change', { target: { value: 'Gomez' } });
+  wrapper.find('input[name="first-name"]').simulate('change', { target: { value: 'Juan', id: 'nombre' } });
+  wrapper.find('input[name="last-name"]').simulate('change', { target: { value: 'Gomez', id: 'apellido' } });
+
   wrapper.find('form').simulate('submit', {preventDefault(){}, target:
     {
       'first-name': {value: 'Juan'},
       'last-name': {value: 'Gomez'},
       reset: () => {}
     }
-  })
+  });
+  console.log(wrapper.state());
   expect(wrapper.find("table tr").length).toBe(2)
   expect(wrapper.find("td").first().text()).toBe('Juan')
   expect(wrapper.find("td").last().text()).toBe('Gomez')

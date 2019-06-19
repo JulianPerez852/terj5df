@@ -68,8 +68,8 @@ class App extends Component {
               <tbody>
                 {this.state.listado.map((invitado)=>
                   <tr key={invitado.id}>
-                    <td>{invitado.nombre}</td>
-                    <td>{invitado.apellido}</td>
+                    <td id="first">{invitado.nombre}</td>
+                    <td id="last">{invitado.apellido}</td>
                   </tr>
                   )}
               </tbody>
