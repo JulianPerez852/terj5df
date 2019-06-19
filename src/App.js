@@ -64,15 +64,14 @@ class App extends Component {
                   <th>Nombre</th>
                   <th>Apellido</th>
                 </tr>     
+              </thead>
+              <tbody>
                 {this.state.listado.map((invitado)=>
                   <tr key={invitado.id}>
                     <td>{invitado.nombre}</td>
                     <td>{invitado.apellido}</td>
                   </tr>
                   )}
-              </thead>
-              <tbody>
-
               </tbody>
             </table>
           </div>
