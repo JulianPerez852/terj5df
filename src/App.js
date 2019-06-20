@@ -8,14 +8,24 @@ class App extends Component {
       apellido: '',
       listado: [],
     }
+    this.handlerName = this.handlerName.bind(this);
+    this.handlerLastName = this.handlerLastName.bind(this);
     this.handlerChange=this.handlerChange.bind(this);
     this.handlerSubmit=this.handlerSubmit.bind(this);
+    this.constants = { NAME: 'nombre', LAST_NAME: 'apellido' };
   }
 
-  handlerChange(e){
-    const variableStado = e.target.id
+  handlerName(e) {
+    this.handlerChange(this.constants.NAME, e.target.value);
+  }
+
+  handlerLastName(e) {
+    this.handlerChange(this.constants.LAST_NAME, e.target.value);
+  }
+
+  handlerChange(prop, value){
     this.setState({
-      [variableStado]: e.target.value
+      [prop]: value
     });
   }
 
@@ -45,12 +55,12 @@ class App extends Component {
             <form onSubmit={this.handlerSubmit}>
               <div className="form-group">
                 <label htmlFor="first-name">Nombre</label>
-                <input id="nombre" type="text" value={this.state.nombre} className="form-control" name="first-name" onChange={this.handlerChange}/>
+                <input id={this.constants.NAME} type="text" value={this.state.nombre} className="form-control" name="first-name" onChange={this.handlerName}/>
               </div>
 
               <div className="form-group">
                 <label htmlFor="last-name">Apellido</label>
-                <input id="apellido" type="text" value={this.state.apellido} className="form-control" name="last-name" onChange={this.handlerChange} />
+                <input id={this.constants.LAST_NAME} type="text" value={this.state.apellido} className="form-control" name="last-name" onChange={this.handlerLastName} />
               </div>
 
               <div className="action">
